@@ -10,18 +10,21 @@
     </parent>
     <groupId>cn.edu.csu</groupId>
     <artifactId>spring-boot-minio-starter</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <name>spring-boot-minio-starter</name>
+
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <minio.version>8.4.3</minio.version>
+        <fastjson.version>2.0.52</fastjson.version>
     </properties>
     <dependencies>
         <dependency>
             <groupId>io.minio</groupId>
             <artifactId>minio</artifactId>
-            <version>8.4.3</version>
+            <version>${minio.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -38,7 +41,7 @@
         <dependency>
             <groupId>com.alibaba.fastjson2</groupId>
             <artifactId>fastjson2</artifactId>
-            <version>2.0.52</version>
+            <version>${fastjson.version}</version>
         </dependency>
     </dependencies>
 </project>

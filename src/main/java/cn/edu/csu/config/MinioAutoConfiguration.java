@@ -1,6 +1,7 @@
 package cn.edu.csu.config;
 
 import cn.edu.csu.MinioFileOperateUtils;
+import cn.edu.csu.async.MinioAsyncFileOperateUtils;
 import cn.edu.csu.properties.MinioProperties;
 import io.minio.MinioClient;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -45,5 +46,14 @@ public class MinioAutoConfiguration {
     @Bean
     public MinioFileOperateUtils minioFileOperateUtils(MinioClient minioClient) {
         return new MinioFileOperateUtils(minioProperties, minioClient);
+    }
+
+    /**
+     * 创建MinioAsyncFileOperateUtils实例，用于操作MinIO的异步工具类
+     */
+    @Bean
+    @ConditionalOnMissingBean(MinioAsyncFileOperateUtils.class)
+    public MinioAsyncFileOperateUtils minioAsyncFileOperateUtils(MinioFileOperateUtils minioFileOperateUtils) {
+        return new MinioAsyncFileOperateUtils(minioFileOperateUtils, null);
     }
 }
